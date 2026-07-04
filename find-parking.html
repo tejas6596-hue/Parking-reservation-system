@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Find Parking | ParkEasy</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+
+</head>
+
+<body class="bg-[#06142E] text-white">
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="bg-slate-900 border-b border-slate-700 shadow-xl">
+
+    <div class="container mx-auto px-8">
+
+        <div class="flex justify-between items-center h-20">
+
+            <div class="flex items-center space-x-3">
+
+                <div class="w-12 h-12 rounded-xl bg-cyan-400 flex items-center justify-center text-black font-bold text-2xl">
+                    P
+                </div>
+
+                <h1 class="text-3xl font-bold text-cyan-400">
+                    ParkEasy
+                </h1>
+
+            </div>
+
+            <div class="hidden md:flex space-x-8 text-lg">
+
+                <a href="index.html" class="hover:text-cyan-400 transition">
+                    Home
+                </a>
+
+                <a href="find-parking.html"
+                    class="text-cyan-400 font-semibold">
+                    Find Parking
+                </a>
+
+                <a href="reservation.html"
+                    class="hover:text-cyan-400 transition">
+                    Reservation
+                </a>
+
+                <a href="pricing.html"
+                    class="hover:text-cyan-400 transition">
+                    Pricing
+                </a>
+
+                <a href="contact.html"
+                    class="hover:text-cyan-400 transition">
+                    Contact
+                </a>
+
+            </div>
+
+            <div class="space-x-4">
+
+                <a href="login.html"
+                    class="px-5 py-2 border border-cyan-400 rounded-lg hover:bg-cyan-400 hover:text-black transition">
+                    Login
+                </a>
+
+                <a href="register.html"
+                    class="px-5 py-2 bg-cyan-400 text-black rounded-lg hover:bg-cyan-300 transition">
+                    Register
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="py-20">
+
+    <div class="container mx-auto px-8">
+
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+
+            <div>
+
+                <h1 class="text-6xl font-bold leading-tight">
+
+                    Find
+
+                    <span class="text-cyan-400">
+
+                        Smart Parking
+
+                    </span>
+
+                    Near You
+
+                </h1>
+
+                <p class="text-gray-300 mt-8 text-xl">
+
+                    Search nearby parking spaces, compare prices,
+                    reserve instantly and navigate effortlessly.
+
+                </p>
+
+                <div class="flex gap-6 mt-10">
+
+                    <a href="#search"
+
+                        class="bg-cyan-400 text-black px-8 py-4 rounded-xl font-semibold hover:bg-cyan-300 transition">
+
+                        Search Parking
+
+                    </a>
+
+                    <a href="#map"
+
+                        class="border border-cyan-400 px-8 py-4 rounded-xl hover:bg-cyan-400 hover:text-black transition">
+
+                        View Map
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div>
+
+                <!-- Replace with your image -->
+
+                <img src="park3.jpg"
+
+                    class="rounded-3xl shadow-2xl w-full">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= SEARCH ================= -->
+
+<section id="search" class="pb-20">
+
+<div class="container mx-auto px-8">
+
+<div class="bg-slate-800 rounded-3xl p-8 shadow-xl">
+
+<h2 class="text-4xl font-bold mb-8">
+
+Search Parking
+
+</h2>
+
+<div class="grid md:grid-cols-4 gap-6">
+
+<input
+
+id="location"
+
+type="text"
+
+placeholder="Enter Location"
+
+class="bg-slate-700 rounded-xl p-4 outline-none focus:ring-2 focus:ring-cyan-400 text-white">
+
+<select
+
+class="bg-slate-700 rounded-xl p-4">
+
+<option>2 Wheels</option>
+
+<option>4 Wheels</option>
+
+</select>
+
+<select
+
+class="bg-slate-700 rounded-xl p-4">
+
+<option>1 Hour</option>
+
+<option>2 Hours</option>
+
+<option>3 Hours</option>
+
+<option>Full Day</option>
+
+</select>
+
+<button
+
+id="search-btn"
+
+class="bg-cyan-400 text-black rounded-xl font-bold hover:bg-cyan-300 transition">
+
+Search
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= AVAILABLE PARKING ================= -->
+
+<section class="pb-24">
+
+<div class="container mx-auto px-8">
+
+<h2 class="text-5xl font-bold text-center mb-16">
+
+Available Parking
+
+</h2>
+
+<div class="grid lg:grid-cols-3 gap-10">
+
+<!-- CARD 1 -->
+
+<div class="bg-slate-800 rounded-3xl overflow-hidden shadow-xl hover:scale-105 transition">
+
+<img src="park1.jpg"
+
+class="h-56 w-full object-cover">
+
+<div class="p-8">
+
+<h3 class="text-3xl font-bold">
+
+City Mall Parking
+
+</h3>
+
+<p class="text-gray-400 mt-3">
+
+42 Slots Available
+
+</p>
+
+<p class="text-cyan-400 mt-3 text-2xl font-bold">
+
+₹20 / Hour
+
+</p>
+
+<a href="reservation.html"
+
+class="block text-center mt-8 bg-cyan-400 text-black py-4 rounded-xl font-semibold hover:bg-cyan-300">
+
+Reserve Now
+
+</a>
+
+</div>
+
+</div>
+
+<!-- CARD 2 -->
+
+<div class="bg-slate-800 rounded-3xl overflow-hidden shadow-xl hover:scale-105 transition">
+
+<img src="metro.jpg"
+
+class="h-56 w-full object-cover">
+
+<div class="p-8">
+
+<h3 class="text-3xl font-bold">
+
+Metro Parking
+
+</h3>
+
+<p class="text-gray-400 mt-3">
+
+25 Slots Available
+
+</p>
+
+<p class="text-cyan-400 mt-3 text-2xl font-bold">
+
+₹15 / Hour
+
+</p>
+
+<a href="reservation.html"
+
+class="block text-center mt-8 bg-cyan-400 text-black py-4 rounded-xl font-semibold hover:bg-cyan-300">
+
+Reserve Now
+
+</a>
+
+</div>
+
+</div>
+
+<!-- CARD 3 -->
+
+<div class="bg-slate-800 rounded-3xl overflow-hidden shadow-xl hover:scale-105 transition">
+
+<img src="airport.jpg"
+
+class="h-56 w-full object-cover">
+
+<div class="p-8">
+
+<h3 class="text-3xl font-bold">
+
+Airport Parking
+
+</h3>
+
+<p class="text-gray-400 mt-3">
+
+60 Slots Available
+
+</p>
+
+<p class="text-cyan-400 mt-3 text-2xl font-bold">
+
+₹30 / Hour
+
+</p>
+
+<a href="reservation.html"
+
+class="block text-center mt-8 bg-cyan-400 text-black py-4 rounded-xl font-semibold hover:bg-cyan-300">
+
+Reserve Now
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ================= MAP SECTION ================= -->
+
+<section id="map" class="pb-24">
+
+    <div class="container mx-auto px-8">
+
+        <h2 class="text-5xl font-bold text-center mb-12">
+
+            Nearby Parking Locations
+
+        </h2>
+
+        <div id="mapView"
+            class="rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-700"
+            style="height:500px;">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= STATISTICS ================= -->
+
+<section class="pb-24">
+
+    <div class="container mx-auto px-8">
+
+        <div class="grid md:grid-cols-4 gap-8">
+
+            <div class="bg-slate-800 rounded-3xl p-8 text-center shadow-xl">
+
+                <h3 class="text-5xl font-bold text-cyan-400">
+                    500+
+                </h3>
+
+                <p class="mt-3 text-gray-300">
+                    Parking Slots
+                </p>
+
+            </div>
+
+            <div class="bg-slate-800 rounded-3xl p-8 text-center shadow-xl">
+
+                <h3 class="text-5xl font-bold text-cyan-400">
+                    1200+
+                </h3>
+
+                <p class="mt-3 text-gray-300">
+                    Daily Users
+                </p>
+
+            </div>
+
+            <div class="bg-slate-800 rounded-3xl p-8 text-center shadow-xl">
+
+                <h3 class="text-5xl font-bold text-cyan-400">
+                    99%
+                </h3>
+
+                <p class="mt-3 text-gray-300">
+                    Satisfaction
+                </p>
+
+            </div>
+
+            <div class="bg-slate-800 rounded-3xl p-8 text-center shadow-xl">
+
+                <h3 class="text-5xl font-bold text-cyan-400">
+                    24/7
+                </h3>
+
+                <p class="mt-3 text-gray-300">
+                    Customer Support
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section class="pb-24">
+
+    <div class="container mx-auto px-8">
+
+        <h2 class="text-5xl font-bold text-center mb-16">
+
+            Why Choose
+            <span class="text-cyan-400">ParkEasy?</span>
+
+        </h2>
+
+        <div class="grid lg:grid-cols-3 gap-10">
+
+            <div class="bg-slate-800 p-8 rounded-3xl shadow-xl">
+
+                <div class="text-6xl mb-6">
+                    🚗
+                </div>
+
+                <h3 class="text-2xl font-bold mb-4">
+
+                    Instant Booking
+
+                </h3>
+
+                <p class="text-gray-300">
+
+                    Reserve your parking space within seconds without waiting.
+
+                </p>
+
+            </div>
+
+            <div class="bg-slate-800 p-8 rounded-3xl shadow-xl">
+
+                <div class="text-6xl mb-6">
+                    📍
+                </div>
+
+                <h3 class="text-2xl font-bold mb-4">
+
+                    Live Location
+
+                </h3>
+
+                <p class="text-gray-300">
+
+                    Find nearby parking using OpenStreetMap integration.
+
+                </p>
+
+            </div>
+
+            <div class="bg-slate-800 p-8 rounded-3xl shadow-xl">
+
+                <div class="text-6xl mb-6">
+                    🔒
+                </div>
+
+                <h3 class="text-2xl font-bold mb-4">
+
+                    Secure Parking
+
+                </h3>
+
+                <p class="text-gray-300">
+
+                    Safe and monitored parking areas for your vehicle.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="bg-slate-900 border-t border-slate-700">
+
+    <div class="container mx-auto px-8 py-12">
+
+        <div class="grid md:grid-cols-3 gap-10">
+
+            <div>
+
+                <h2 class="text-3xl font-bold text-cyan-400">
+
+                    ParkEasy
+
+                </h2>
+
+                <p class="text-gray-400 mt-4">
+
+                    Smart Parking Slot Reservation System designed for faster,
+                    safer and convenient parking experiences.
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3 class="text-2xl font-semibold mb-4">
+
+                    Quick Links
+
+                </h3>
+
+                <div class="space-y-3">
+
+                    <a href="index.html" class="block hover:text-cyan-400">
+                        Home
+                    </a>
+
+                    <a href="reservation.html" class="block hover:text-cyan-400">
+                        Reservation
+                    </a>
+
+                    <a href="pricing.html" class="block hover:text-cyan-400">
+                        Pricing
+                    </a>
+
+                    <a href="contact.html" class="block hover:text-cyan-400">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div>
+
+                <h3 class="text-2xl font-semibold mb-4">
+
+                    Contact
+
+                </h3>
+
+                <p class="text-gray-400">
+
+                    📍 Bangalore, India
+
+                </p>
+
+                <p class="text-gray-400 mt-2">
+
+                    📧 support@parkeasy.com
+
+                </p>
+
+                <p class="text-gray-400 mt-2">
+
+                    📞 +91 9876543210
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <hr class="border-slate-700 my-8">
+
+        <p class="text-center text-gray-400">
+
+            © 2026 ParkEasy. All Rights Reserved.
+
+        </p>
+
+    </div>
+
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="js/script.js"></script>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+
+const map = L.map('mapView').setView([12.9716,77.5946],13);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+
+attribution:'© OpenStreetMap'
+
+}).addTo(map);
+
+L.marker([12.9716,77.5946])
+
+.addTo(map)
+
+.bindPopup("<b>City Mall Parking</b><br>42 Slots Available");
+
+L.marker([12.9784,77.6408])
+
+.addTo(map)
+
+.bindPopup("<b>Metro Parking</b><br>25 Slots Available");
+
+L.marker([12.9591,77.6974])
+
+.addTo(map)
+
+.bindPopup("<b>Airport Parking</b><br>60 Slots Available");
+
+</script>
+
+</body>
+
+</html>
