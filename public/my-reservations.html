@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reservations</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 text-white">
+
+<div class="max-w-6xl mx-auto p-10">
+
+    <h1 class="text-4xl font-bold text-cyan-400 mb-8">
+        My Reservations
+    </h1>
+
+    <div id="reservation-list" class="space-y-6">
+
+    </div>
+
+</div>
+
+<script>
+
+const userId = localStorage.getItem("user_id");
+
+fetch(`/my-reservations/${userId}`)
+
+.then(res => res.json())
+
+.then(data => {
+
+    const container = document.getElementById("reservation-list");
+
+    if(data.reservations.length===0){
+
+        container.innerHTML=`
+        <h2 class="text-xl">
+        No Reservations Found
+        </h2>
+        `;
+
+        return;
+    }
+
+    data.reservations.forEach(reservation=>{
+
+        container.innerHTML += `
+
+        <div class="bg-slate-800 rounded-xl p-6">
+
+            <h2 class="text-2xl font-bold text-cyan-400">
+                Reservation #${reservation.reservation_id}
+            </h2>
+
+            <p><b>Parking :</b> ${reservation.parking_name}</p>
+            <p><b>Vehicle :</b> ${reservation.vehicle_number}</p>
+            <p><b>Vehicle Type :</b> ${reservation.vehicle_type}</p>
+            <p><b>Date :</b> ${reservation.booking_date}</p>
+            <p><b>Entry :</b> ${reservation.entry_time}</p>
+            <p><b>Exit :</b> ${reservation.exit_time}</p>
+            <p><b>Payment :</b> ${reservation.payment_method}</p>
+            <p><b>Amount :</b> ₹${reservation.amount}</p>
+
+        </div>
+
+        `;
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

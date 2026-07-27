@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reservation - ParkEasy</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#020617;
+    color:white;
+}
+
+.glass{
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:0 8px 30px rgba(0,0,0,.4);
+}
+
+nav{
+    background:#0f172a;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="fixed top-0 left-0 w-full z-50">
+
+    <div class="container mx-auto px-8">
+
+        <div class="flex justify-between items-center h-20">
+
+            <a href="index.html" class="text-3xl font-bold text-cyan-400">
+                ParkEasy
+            </a>
+
+            <div class="space-x-8">
+                <a href="index.html" class="hover:text-cyan-400">Home</a>
+                <a href="find-parking.html" class="hover:text-cyan-400">Find Parking</a>
+                <a href="contact.html" class="hover:text-cyan-400">Contact</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- ================= HEADER ================= -->
+
+<section class="pt-36 pb-12">
+
+    <div class="container mx-auto px-8 text-center">
+
+        <h1 class="text-5xl font-bold">
+            Reserve Your
+            <span class="text-cyan-400">Parking Slot</span>
+        </h1>
+
+        <p class="mt-4 text-gray-400">
+            Complete your booking details below.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= BOOKING FORM ================= -->
+
+<section class="pb-20">
+
+    <div class="container mx-auto px-8">
+
+        <div class="glass max-w-5xl mx-auto rounded-3xl p-10">
+
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- LEFT SIDE -->
+
+                <div>
+
+                    <label class="block mb-2 font-semibold">
+                        Parking Location
+                    </label>
+
+                    <input
+                        id="parking-name"
+                        type="text"
+                        readonly
+                        class="w-full bg-slate-700 rounded-xl p-4 text-white">
+
+                    <label class="block mt-6 mb-2 font-semibold">
+                        Vehicle Number
+                    </label>
+
+                    <input
+                        id="vehicle-number"
+                        type="text"
+                        placeholder="KA01AB1234"
+                        class="w-full bg-slate-700 rounded-xl p-4 text-white">
+
+                    <label class="block mt-6 mb-2 font-semibold">
+                        Vehicle Type
+                    </label>
+
+                    <select
+                        id="vehicle-type"
+                        class="w-full bg-slate-700 rounded-xl p-4 text-white">
+
+                        <option>Car</option>
+                        <option>Bike</option>
+                        <option>Scooter</option>
+
+                    </select>
+
+                    <label class="block mt-6 mb-2 font-semibold">
+                        Booking Date
+                    </label>
+
+                    <input
+                        id="booking-date"
+                        type="date"
+                        class="w-full bg-slate-700 rounded-xl p-4 text-white">
+
+                </div>
+
+                <!-- RIGHT SIDE -->
+
+                <div>
+
+                    <label class="block mb-2 font-semibold">
+                        Entry Time
+                    </label>
+
+                    <input
+                        id="entry-time"
+                        type="time"
+                        class="w-full bg-slate-700 rounded-xl p-4 text-white">
+
+                    <label class="block mt-6 mb-2 font-semibold">
+                        Exit Time
+                    </label>
+
+                    <input
+                        id="exit-time"
+                        type="time"
+                        class="w-full bg-slate-700 rounded-xl p-4 text-white">
+
+                    <label class="block mt-6 mb-2 font-semibold">
+                        Payment Method
+                    </label>
+
+                    <select
+                        id="payment-method"
+                        class="w-full bg-slate-700 rounded-xl p-4 text-white">
+
+                        <option>UPI</option>
+                        <option>Credit Card</option>
+                        <option>Debit Card</option>
+                        <option>Cash</option>
+
+                    </select>
+
+                    <label class="block mt-6 mb-2 font-semibold">
+                        Total Amount
+                    </label>
+
+                    <input
+                        id="amount"
+                        type="text"
+                        readonly
+                        value="₹0"
+                        class="w-full bg-slate-700 rounded-xl p-4 text-cyan-400 text-xl font-bold">
+
+                </div>
+
+            </div>
+
+            <div class="text-center mt-10">
+
+                <button
+                    id="confirm-btn"
+                    class="bg-cyan-500 hover:bg-cyan-600 px-10 py-4 rounded-xl text-lg font-bold transition">
+
+                    Confirm Reservation
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= MY RESERVATIONS ================= -->
+
+<section class="pb-20">
+
+    <div class="container mx-auto px-8">
+
+        <div class="glass max-w-5xl mx-auto rounded-3xl p-10">
+
+            <h2 class="text-3xl font-bold text-cyan-400 mb-8">
+                My Reservations
+            </h2>
+
+            <div id="reservation-list" class="space-y-6">
+
+                <!-- Reservations will appear here -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+// ==========================
+// Load Parking Name
+// ==========================
+
+const parking = localStorage.getItem("selectedParking") || "Not Selected";
+document.getElementById("parking-name").value = parking;
+
+// ==========================
+// Parking Rates
+// ==========================
+
+const parkingRates = {
+    "City Mall Parking": 20,
+    "Airport Parking": 30,
+    "Metro Parking": 15,
+    "Metro Station Parking": 15
+};
+
+const rate = parkingRates[parking] || 20;
+
+// ==========================
+// Elements
+// ==========================
+
+const entry = document.getElementById("entry-time");
+const exit = document.getElementById("exit-time");
+const amount = document.getElementById("amount");
+
+// ==========================
+// Calculate Amount
+// ==========================
+
+function calculateAmount(){
+
+    if(entry.value==="" || exit.value===""){
+        amount.value="₹0";
+        return;
+    }
+
+    const start=new Date("2000-01-01 "+entry.value);
+    const end=new Date("2000-01-01 "+exit.value);
+
+    let hours=(end-start)/(1000*60*60);
+
+    if(hours<=0){
+        amount.value="₹0";
+        return;
+    }
+
+    amount.value="₹"+(hours*rate);
+
+}
+
+entry.addEventListener("change",calculateAmount);
+exit.addEventListener("change",calculateAmount);
+
+// ==========================
+// Load Reservations
+// ==========================
+
+function loadReservations(){
+
+    const userId=localStorage.getItem("user_id");
+
+    fetch(`/my-reservations/${userId}`)
+    .then(response=>response.json())
+    .then(data=>{
+
+        const container=document.getElementById("reservation-list");
+
+        container.innerHTML="";
+
+        if(!data.success || data.reservations.length===0){
+
+            container.innerHTML=`
+                <div class="text-center text-gray-400">
+                    No Reservations Found
+                </div>
+            `;
+
+            return;
+        }
+
+        data.reservations.forEach(reservation=>{
+
+            container.innerHTML += `
+
+<div class="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+
+    <h3 class="text-2xl font-bold text-cyan-400 mb-4">
+        Reservation #${reservation.reservation_id}
+    </h3>
+
+    <div class="grid md:grid-cols-2 gap-3">
+
+        <p><b>Parking:</b> ${reservation.parking_name}</p>
+
+        <p><b>Vehicle:</b> ${reservation.vehicle_number}</p>
+
+        <p><b>Vehicle Type:</b> ${reservation.vehicle_type}</p>
+
+        <p><b>Date:</b> ${reservation.booking_date.split("T")[0]}</p>
+
+        <p><b>Entry:</b> ${reservation.entry_time}</p>
+
+        <p><b>Exit:</b> ${reservation.exit_time}</p>
+
+        <p><b>Payment:</b> ${reservation.payment_method}</p>
+
+        <p><b>Amount:</b> ₹${reservation.amount}</p>
+
+    </div>
+
+    <div class="mt-6 text-right">
+
+        <button
+            onclick="cancelReservation(${reservation.reservation_id})"
+            class="bg-red-500 hover:bg-red-600 px-6 py-2 rounded-lg font-semibold">
+
+            Cancel Reservation
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+        });
+
+    })
+    .catch(err=>{
+        console.error(err);
+    });
+
+}
+
+// ==========================
+// Confirm Reservation
+// ==========================
+
+document.getElementById("confirm-btn").addEventListener("click",function(){
+
+    const vehicle=document.getElementById("vehicle-number").value.trim();
+    const vehicleType=document.getElementById("vehicle-type").value;
+    const bookingDate=document.getElementById("booking-date").value;
+    const payment=document.getElementById("payment-method").value;
+
+    const userId=localStorage.getItem("user_id");
+
+    const parkingIds={
+        "City Mall Parking":1,
+        "Airport Parking":2,
+        "Metro Station Parking":3
+    };
+
+    const parkingId=parkingIds[parking];
+
+    if(vehicle===""){
+        alert("Please enter vehicle number");
+        return;
+    }
+
+    if(bookingDate===""){
+        alert("Please select booking date");
+        return;
+    }
+
+    if(entry.value==="" || exit.value===""){
+        alert("Please select entry and exit time");
+        return;
+    }
+
+    if(amount.value==="₹0"){
+        alert("Invalid booking duration");
+        return;
+    }
+
+    fetch("/reservation",{
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+
+            user_id:userId,
+            parking_id:parkingId,
+            vehicle_number:vehicle,
+            vehicle_type:vehicleType,
+            booking_date:bookingDate,
+            entry_time:entry.value,
+            exit_time:exit.value,
+            payment_method:payment,
+            amount:amount.value.replace("₹","")
+
+        })
+
+    })
+
+    .then(response=>response.json())
+
+    .then(result=>{
+
+        if(!result.success){
+
+            alert(result.message);
+            return;
+
+        }
+
+        alert("Reservation Confirmed!");
+
+        document.getElementById("vehicle-number").value="";
+        document.getElementById("booking-date").value="";
+        document.getElementById("entry-time").value="";
+        document.getElementById("exit-time").value="";
+        document.getElementById("payment-method").value="UPI";
+        amount.value="₹0";
+
+        loadReservations();
+
+    })
+
+    .catch(err=>{
+
+        console.error(err);
+        alert("Unable to connect to server.");
+
+    });
+
+});
+
+// ==========================
+// Load on Page Open
+// ==========================
+// ==========================
+// Cancel Reservation
+// ==========================
+
+function cancelReservation(reservationId) {
+
+const confirmCancel = confirm("Are you sure you want to cancel this reservation?");
+
+if (!confirmCancel) {
+    return;
+}
+
+fetch(`/reservation/${reservationId}`, {
+
+    method: "DELETE"
+
+})
+.then(response => response.json())
+.then(result => {
+
+    if (!result.success) {
+
+        alert(result.message);
+        return;
+
+    }
+
+    alert(result.message);
+
+    // Refresh reservation list
+    loadReservations();
+
+})
+.catch(error => {
+
+    console.error(error);
+    alert("Unable to cancel reservation.");
+
+});
+
+}
+loadReservations();
+
+</script>
+
+</body>
+</html>

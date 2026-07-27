@@ -1,1 +1,17 @@
+# macOS
 .DS_Store
+
+# Dependencies
+node_modules/
+parkeasy-react/node_modules/
+
+# Environment files
+.env
+parkeasy-react/.env
+
+# VS Code
+.vscode/
+
+# Build folders
+dist/
+parkeasy-react/dist/
